@@ -1,6 +1,7 @@
 package agenda;
 
 import java.time.*;
+import java.util.ArrayList;
 
 public class Event {
 
@@ -41,7 +42,16 @@ public class Event {
      */
     public boolean isInDay(LocalDate aDay) {
         // TODO : implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+ boolean isInDay = false;
+        LocalDate start = myStart.toLocalDate();
+        ArrayList<LocalDate> liste = new ArrayList<LocalDate>();
+        myDuration.get();
+        liste.add(start);
+        if (aDay.equals(start)) {
+            isInDay = true;
+        }
+        return isInDay;
+    }
     }
    
     /**
