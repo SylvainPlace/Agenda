@@ -9,6 +9,9 @@ import java.time.temporal.ChronoUnit;
  */
 public class RepetitiveEvent extends Event {
 
+    private ChronoUnit frequency;
+    private ArrayList<LocalDate> lesExceptions;
+
     /**
      * Constructs a repetitive event
      *
@@ -22,9 +25,6 @@ public class RepetitiveEvent extends Event {
      * <LI>ChronoUnit.MONTHS for monthly repetitions</LI>
      * </UL>
      */
-    private ChronoUnit frequency;
-    private ArrayList<LocalDate> lesExceptions;
-
     public RepetitiveEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency) {
         super(title, start, duration);
         this.frequency = frequency;
