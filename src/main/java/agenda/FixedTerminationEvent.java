@@ -31,6 +31,17 @@ public class FixedTerminationEvent extends RepetitiveEvent {
     public FixedTerminationEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency, LocalDate terminationInclusive) {
         super(title, start, duration, frequency);
         this.terminationInclusive = terminationInclusive;
+        long between = ChronoUnit.DAYS.between(start, terminationInclusive);
+        if (frequency.equals(ChronoUnit.DAYS)) {
+            numberOfOccurrences = between;
+        }
+        if (frequency.equals(ChronoUnit.WEEKS)) {
+            numberOfOccurrences = between / 7;
+        }
+        if (frequency.equals(ChronoUnit.MONTHS)) {
+            numberOfOccurrences = between / 30;
+        }
+
     }
 
     /**
@@ -51,6 +62,18 @@ public class FixedTerminationEvent extends RepetitiveEvent {
     public FixedTerminationEvent(String title, LocalDateTime start, Duration duration, ChronoUnit frequency, long numberOfOccurrences) {
         super(title, start, duration, frequency);
         this.numberOfOccurrences = numberOfOccurrences;
+        long between = 0;
+        if (frequency.equals(ChronoUnit.DAYS)) {
+            between = numberOfOccurrences;
+        }
+        if (frequency.equals(ChronoUnit.WEEKS)) {
+            between = numberOfOccurrences * 7;
+        }
+        if (frequency.equals(ChronoUnit.MONTHS)) {
+            between = numberOfOccurrences * 30;
+        }
+        LocalDate nStart = start.toLocalDate();
+        terminationInclusive = nStart.plusDays(between);
     }
 
     /**
