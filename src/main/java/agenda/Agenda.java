@@ -48,7 +48,7 @@ public class Agenda {
     public List<Event> findByTitle(String title) {
         ArrayList<Event> eventsDay = new ArrayList<>();
         for (Event e : lesEvents) {
-            if (e.getTitle() == title) {
+            if (e.getTitle().equals(title)) {
                 eventsDay.add(e);
             }
         }
