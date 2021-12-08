@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 public class RepetitiveEvent extends Event {
 
     private ChronoUnit frequency;
-    private ArrayList<LocalDate> lesExceptions;
+    private List<LocalDate> lesExceptions;
 
     /**
      * Constructs a repetitive event
