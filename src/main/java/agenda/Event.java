@@ -41,10 +41,13 @@ public class Event {
     public boolean isInDay(LocalDate aDay) {
         boolean isInDay = false;
         LocalDate start = myStart.toLocalDate();
-        if (aDay.equals(start) || (myStart.plus(myDuration).toLocalDate().equals(aDay))) {
-            isInDay = true;
+        if ((aDay.isAfter(start)) || (aDay.isEqual(start))) {
+            if (aDay.isBefore(myStart.plus(myDuration).toLocalDate()) || aDay.isEqual(myStart.plus(myDuration).toLocalDate())) {
+                isInDay = true;
+            }
         }
         return isInDay;
+
     }
 
     /**
